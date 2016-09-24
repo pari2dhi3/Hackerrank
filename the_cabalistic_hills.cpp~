@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	int t,n,m,i,flag,j,a,b;
+	vector<pair <int,int> > p;
+	cin >> t;
+	while(t--)
+	{
+		cin >> n >> m;
+		for(i=0;i<n;i++)
+			p.push_back(make_pair(i,-1));
+		for(i=0;i<m;i++)
+		{
+			cin >> a >> b;
+			p[a-1].second=b-1;
+		}
+		i=0;
+		j=0;
+		flag=0;
+		while((i!=0)||(flag!=1))
+		{
+			if(p[i].second!=-1)
+			{
+				j=p[i].second;
+				p[i].second=-1;
+				i=j;
+				if(i==n-1)
+					flag=1;
+			}
+			else
+			{
+				flag=0;
+				break;
+			}
+		}
+		if(flag==0)
+			cout << "Danger!! Lucifer will trap you\n";
+		else 
+			cout << "Go on get the Magical Lamp\n";
+	}
+	return 0;
+}
+			
+
+
+
+
